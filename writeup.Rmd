@@ -1,0 +1,39 @@
+---
+title: "Explanation"
+author: "Trevor Greissinger"
+output: html_document
+---
+
+## Game Score
+
+For a detailed explanation of the origins of Game Score in hockey and other sports, please see Dom Luszczyszyn's excellent post on Hockey-Graphs:  [Measuring Single Game Productivity:  An Introduction To Game Score](https://hockey-graphs.com/2016/07/13/measuring-single-game-productivity-an-introduction-to-game-score/).
+
+Game Score seeks to translate an individual player's events across a game to a single metric that scales roughly with points.  Using data from the Women's Hockey competition at the 2018 Winter Olympics (tracked by Stathletes), I've computed the Game Score weights for the following events:
+
+|Event                   |     weight|
+|:-----------------------|----------:|
+|Goal                    |  1.0000000|
+|Scoring Play            |  0.5487805|
+|Faceoff Win             |  0.0670641|
+|Faceoff Loss            | -0.0670641|
+|Puck Recovery           |  0.0076207|
+|Dump In/Out Lost        | -0.0376569|
+|Dump In/Out Retained    |  0.0376569|
+|Zone Entry Offense      |  0.0434783|
+|Zone Entry Defense      | -0.0434783|
+|Play (pass)             |  0.0070844|
+|Incomplete Play (pass)  | -0.0070844|
+|Takeaway                |  0.0592105|
+|SOG                     |  0.0741351|
+|Shot Attempt            |  0.0592885|
+|Penalty Taken           | -0.1858974|
+|Penalty Drawn           |  0.1858974|
+
+For the most part, these are computed by comparing the frequency of each event to a goal.  For example, for each goal in the data set, there were 0.067 faceoff wins (and losses).
+
+To compute a player's Game Score for an individual game, or series of games, we add the weights of each of that player's events.  For example, the Game Score of a player with 1 goal, 1 scoring play, and 2 faceoff losses will be computed as:
+
+
+\begin{aligned}
+GS &= 1.00 * 1 + 0.549 * 1 - 0.067 * 2 = 1.415
+\end{aligned}
