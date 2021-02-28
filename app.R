@@ -1,4 +1,6 @@
 library(shiny)
+library(DT)
+library(tidyverse)
 
 ui <- fluidPage(
 
