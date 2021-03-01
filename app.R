@@ -143,7 +143,7 @@ server <- function(input, output, session) {
             DT::formatRound(columns = 6,
                             digits = 3)
     })
-    output$skaterTable <- renderDataTable({
+    output$skaterTable <- DT::renderDataTable({
         skater.table()
     })
     
