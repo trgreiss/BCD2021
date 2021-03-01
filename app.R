@@ -40,7 +40,6 @@ ui <- fluidPage(
             
         ),
 
-        # Show a plot of the generated distribution
         mainPanel(
             div(
                 style = "position:relative",
@@ -60,6 +59,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
     #load RData
+    load(".RData")
     
     observeEvent(input$team,{
         updateSelectInput(session,'player',
